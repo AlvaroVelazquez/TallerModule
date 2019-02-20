@@ -1,0 +1,133 @@
+<odoo>
+
+    <data>
+
+
+        <!--COCHE-->
+
+        <record model="ir.actions.act_window" id="action_coche">
+            <field name="name">coche</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model='ir.ui.view' id='coche_tree_view'>
+            <field name="name">coche.tree</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <tree string="Coche Tree">
+                    <field name="name"/>
+                    <field name="marca"/>
+                    <field name="modelo"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model='ir.ui.view' id='coche_form_view'>
+            <field name="name">coche.tree</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Coches">
+                        <group>
+                            <field name="name"/>
+                            <field name="marca"/>
+                            <field name="modelo"/>
+                            <field name="phone"/>
+                             <field name="taller_id"/>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+         <!--TALLER-->
+
+        <record model="ir.actions.act_window" id="action_taller">
+            <field name="name">taller</field>
+            <field name="res_model">taller1.taller</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model='ir.ui.view' id='taller_tree_view'>
+            <field name="name">taller.tree</field>
+            <field name="model">taller1.taller</field>
+            <field name="arch" type="xml">
+                <tree string="Taller Tree">
+                    <field name="name"/>
+                    <field name="direccion"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model='ir.ui.view' id='taller_form_view'>
+            <field name="name">taller.tree</field>
+            <field name="model">taller1.taller</field>
+            <field name="arch" type="xml">
+            <form>
+                        <group>
+                            <field name="name"/>
+                            <field name="direccion"/>
+                            <field name="coche_ids"/>
+                        </group>
+                </form>
+            </field>
+        </record>
+
+
+         <!--MECANICO-->
+
+        <record model="ir.actions.act_window" id="action_mecanico">
+            <field name="name">mecanico</field>
+            <field name="res_model">taller1.mecanico</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model='ir.ui.view' id='mecanico_tree_view'>
+            <field name="name">taller.tree</field>
+            <field name="model">taller1.mecanico</field>
+            <field name="arch" type="xml">
+                <tree string="Taller Tree">
+                    <field name="name"/>
+                    <field name="apellidos"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model='ir.ui.view' id='mecanico_form_view'>
+            <field name="name">taller.tree</field>
+            <field name="model">taller1.mecanico</field>
+            <field name="arch" type="xml">
+            <form>
+                        <group>
+                            <field name="name"/>
+                            <field name="apellidos"/>
+                            <field name="taller_id"/>
+                            <field name="pais_id"/>
+                        </group>
+                </form>
+            </field>
+        </record>
+
+
+
+
+
+        <!-- Top menu item -->
+
+        <menuitem name="TallerModule" id="menu_root"/>
+
+        <!-- menu categories -->
+
+        <menuitem name="Menu" id="menu" parent="menu_root"/>
+
+        <!-- actions -->
+
+        <menuitem name="coche" id="menu_coche" parent="menu" action="action_coche"/>
+        <menuitem name="taller" id="menu_taller" parent="menu" action="action_taller"/>
+         <menuitem name="mecanico" id="menu_mecanico" parent="menu" action="action_mecanico"/>
+
+    </data>
+
+</odoo>
